@@ -522,6 +522,17 @@ func (st *Store) Close(ctx context.Context) error {
 			st.log.WithError(err).Error("transferring leadership")
 		} else {
 			st.log.Info("successfully transferred leadership to another server")
+
+			// Wait for leadership change
+			deadline := time.Now().Add(5 * time.Second)
+			for time.Now().Before(deadline) {
+				_, leaderID := st.raft.LeaderWithID()
+				if leaderID != "" && leaderID != raft.ServerID(st.cfg.NodeID) {
+					st.log.WithField("new_leader", leaderID).Info("leadership successfully transferred, new leader elected")
+					break
+				}
+				time.Sleep(100 * time.Millisecond)
+			}
 		}
 	}
 
