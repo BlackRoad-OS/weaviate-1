@@ -33,7 +33,7 @@ func (m *Module) initNearText() error {
 }
 
 func (m *Module) initNearVideo() error {
-	m.nearVideoSearcher = nearVideo.NewSearcher(m.videoVectorizer)
+	m.nearVideoSearcher = nearVideo.NewSearcher(m.vectorizer)
 	m.nearVideoGraphqlProvider = nearVideo.New()
 	return nil
 }

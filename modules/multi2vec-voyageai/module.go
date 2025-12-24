@@ -43,18 +43,12 @@ type Module struct {
 	nearTextTransformer      modulecapabilities.TextTransform
 	nearVideoGraphqlProvider modulecapabilities.GraphQLArguments
 	nearVideoSearcher        modulecapabilities.Searcher[[]float32]
-	videoVectorizer          videoVectorizer
 	metaClient               metaClient
 	logger                   logrus.FieldLogger
 }
 
 type metaClient interface {
 	MetaInfo() (map[string]any, error)
-}
-
-type videoVectorizer interface {
-	VectorizeVideo(ctx context.Context,
-		video string, cfg moduletools.ClassConfig) ([]float32, error)
 }
 
 func (m *Module) Name() string {
