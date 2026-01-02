@@ -1149,3 +1149,44 @@ func (p *Provider) UsageEnabled() bool {
 	}
 	return false
 }
+
+// MigrateVectorizerSettings compares and migrates module settings if module settings
+// changed, an example would be renaming of baseUrl property setting to baseURL
+// in that case we need to migrate baseURL value to new property name.
+func (p *Provider) MigrateVectorizerSettings(oldVectorizerConfig, newVectorizerConfig any) bool {
+	oldVectorizerCfg, oldVectorizerCfgOk := oldVectorizerConfig.(map[string]any)
+	newVectorizerCfg, newVectorizerCfgOk := newVectorizerConfig.(map[string]any)
+	if oldVectorizerCfgOk && newVectorizerCfgOk {
+		oldModuleMigrated := false
+		for modName, modSettings := range oldVectorizerCfg {
+			oldModuleMigrated = p.migrateVectorizerSettings(modName, modSettings)
+		}
+		newModuleMigrated := false
+		for modName, modSettings := range newVectorizerCfg {
+			newModuleMigrated = p.migrateVectorizerSettings(modName, modSettings)
+		}
+		return oldModuleMigrated || newModuleMigrated
+	}
+	return false
+}
+
+func (p *Provider) migrateVectorizerSettings(modName string, moduleSettings any) bool {
+	if mod := p.GetByName(modName); mod != nil {
+		if migrate, ok := mod.(modulecapabilities.MigrateProperties); ok {
+			if settings, ok := moduleSettings.(map[string]any); ok {
+				migratedSettings := false
+				for _, prop := range migrate.MigrateProperties() {
+					if oldValue, ok := settings[prop.Name]; ok && oldValue != "" {
+						if !prop.IsNew {
+							settings[prop.NewName] = oldValue
+							delete(settings, prop.Name)
+						}
+						migratedSettings = true
+					}
+				}
+				return migratedSettings
+			}
+		}
+	}
+	return false
+}
