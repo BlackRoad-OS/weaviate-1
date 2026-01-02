@@ -26,7 +26,7 @@ type ClassConfigurator interface {
 	// ClassDefaults provides the defaults for a per-class module config. The
 	// module provider will merge the props into the user-specified config with
 	// the user-provided values taking precedence
-	ClassConfigDefaults() map[string]interface{}
+	ClassConfigDefaults() map[string]any
 
 	// PropertyConfigDefaults provides the defaults for a per-property module
 	// config. The module provider will merge the props into the user-specified
@@ -35,7 +35,7 @@ type ClassConfigurator interface {
 	// dataType is not guaranteed to be non-nil, it might be nil in the case a
 	// user specified an invalid dataType, as some validation only occurs after
 	// defaults are set.
-	PropertyConfigDefaults(dataType *schema.DataType) map[string]interface{}
+	PropertyConfigDefaults(dataType *schema.DataType) map[string]any
 
 	// ValidateClass MAY validate anything about the class, except the config of
 	// another module. The specified ClassConfig can be used to easily retrieve
@@ -45,4 +45,19 @@ type ClassConfigurator interface {
 	// from class.ModuleConfig["other-modules-name"].
 	ValidateClass(ctx context.Context, class *models.Class,
 		classConfig moduletools.ClassConfig) error
+}
+
+// MigrateProperty defines module settings property name migration example:
+// { OldName: "baseUrl", NewName: "baseURL" }
+// This definition means that if a class config contains a property
+// with an old name, then it's value will be assigned to new name
+// and the old name will be removed for class's config.
+type MigrateProperty struct {
+	OldName, NewName string
+}
+
+// MigrateProperties interface enables module settings property names to be migrated
+// from old names to new names.
+type MigrateProperties interface {
+	MigrateProperties() []MigrateProperty
 }
