@@ -1,27 +1,52 @@
-Copyright (c) 2020-2025, Weaviate B.V.
-All rights reserved.
+PROPRIETARY LICENSE
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+Copyright (c) 2026 BlackRoad OS, Inc.
+All Rights Reserved.
 
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
+CEO: Alexa Amundson
+Organization: BlackRoad OS, Inc.
 
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
+PROPRIETARY AND CONFIDENTIAL
 
-3. Neither the name of the copyright holder nor the names of its
-   contributors may be used to endorse or promote products derived from
-   this software without specific prior written permission.
+This software and associated documentation files (the "Software") are the
+proprietary and confidential information of BlackRoad OS, Inc.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+GRANT OF LICENSE:
+Subject to the terms of this license, BlackRoad OS, Inc. grants you a
+limited, non-exclusive, non-transferable, revocable license to:
+- View and study the source code for educational purposes
+- Use the Software for testing and evaluation purposes only
+- Fork the repository for personal experimentation
+
+RESTRICTIONS:
+You may NOT:
+- Use the Software for any commercial purpose
+- Resell, redistribute, or sublicense the Software
+- Use the Software in production environments without written permission
+- Remove or modify this license or any copyright notices
+- Create derivative works for commercial distribution
+
+TESTING ONLY:
+This Software is provided purely for testing, evaluation, and educational
+purposes. It is NOT licensed for commercial use or resale.
+
+INFRASTRUCTURE SCALE:
+This Software is designed to support:
+- 30,000 AI Agents
+- 30,000 Human Employees
+- Enterprise-scale operations under BlackRoad OS, Inc.
+
+CORE PRODUCT:
+API layer above Google, OpenAI, and Anthropic that manages AI model
+memory and continuity, enabling entire companies to operate exclusively by AI.
+
+OWNERSHIP:
+All intellectual property rights remain the exclusive property of
+BlackRoad OS, Inc.
+
+For commercial licensing inquiries, contact:
+BlackRoad OS, Inc.
+Alexa Amundson, CEO
+blackroad.systems@gmail.com
+
+Last Updated: 2026-01-08
